@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateTicketRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\TicketRequest;
 use App\Ticket;
 
 class TicketController extends Controller {
@@ -34,7 +35,7 @@ class TicketController extends Controller {
      *
      * @return Response
      */
-    public function store(CreateTicketRequest $request) {
+    public function store(TicketRequest $request) {
         $input = $request->all();
         
         Ticket::create($input);
@@ -61,7 +62,9 @@ class TicketController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        //
+        $ticket = Ticket::findOrFail($id);        
+        
+        return view('tickets.edit', compact('ticket'));
     }
 
     /**
@@ -70,8 +73,12 @@ class TicketController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id) {
-        //
+    public function update($id, TicketRequest $request) {
+        $ticket = Ticket::findOrFail($id);
+        
+        $ticket->update( $request->all() );
+        
+        return redirect('tickets');
     }
 
     /**

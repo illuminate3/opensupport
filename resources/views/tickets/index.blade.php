@@ -10,8 +10,11 @@
 
 @if ( count($tickets) )
 @foreach ( $tickets as $ticket )
+
 <a href="{{ action('TicketController@show', $ticket->id ) }}"> <h3>{{ $ticket->title }}</h3></a> 
+<a href="{{ action('TicketController@edit', $ticket->id ) }}"> <h5>Edit</h5></a> 
 <h5>Created at : {{$ticket->created_at->diffForHumans() }}</h5>
+<h5>Ticket id: {{ $ticket->id }}</h5>
 <h5>Status : {{ $ticket->status }}</h5>
 <p>{{ $ticket->description }}</p>
 <hr/>

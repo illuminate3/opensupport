@@ -8,5 +8,13 @@ class Ticket extends Model {
     
     protected $fillable = [ 'title', 'description', 'status', 'user_id' ];
     
-    
+    /**
+     * A Ticket can be assigned to a User.
+     * 
+     * @return type
+     */
+    public function assigned()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

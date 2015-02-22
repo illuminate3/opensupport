@@ -14,21 +14,9 @@
 Route::get('/', 'PageController@index');
 Route::get('about', 'PageController@about');
 
-Route::get('tickets', 'TicketController@index');
-Route::get('tickets/create', 'TicketController@create');
-Route::get('tickets/{id}', 'TicketController@show');
-Route::post('tickets', 'TicketController@store');
-
-
-
-
-
+Route::resource('tickets', 'TicketController');
 
 /*
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

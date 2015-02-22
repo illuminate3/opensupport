@@ -5,8 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTicketsTable extends Migration {
 
-    protected $fillable = [ 'title', 'description', 'status', 'user_id' ];
-    
     /**
      * Run the migrations.
      *

@@ -31,4 +31,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+        /**
+         * A User can have many Ticket assigned to him.
+         * 
+         * @return type
+         */
+        public function tickets()
+        {
+            return $this->hasMany('App\Ticket');
+        }
 }
