@@ -16,9 +16,7 @@ Route::get('about', 'PageController@about');
 
 Route::resource('tickets', 'TicketController');
 
-/*
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-*/
