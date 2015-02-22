@@ -12,8 +12,17 @@
 */
 
 Route::get('/', 'PageController@index');
+Route::get('about', 'PageController@about');
 
-Route::get('/about', 'PageController@about');
+Route::get('tickets', 'TicketController@index');
+Route::get('tickets/create', 'TicketController@create');
+Route::get('tickets/{id}', 'TicketController@show');
+Route::post('tickets', 'TicketController@store');
+
+
+
+
+
 
 /*
 Route::get('/', 'WelcomeController@index');
