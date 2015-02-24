@@ -13,8 +13,18 @@ class Ticket extends Model {
      * 
      * @return type
      */
-    public function assigned()
+    public function assignedTo()
     {
         return $this->belongsTo('App\User');
+    }
+    
+    /**
+     * A Ticket is from a client.
+     * 
+     * @return type
+     */
+    public function isFrom()
+    {
+        return $this->belongsTo('App\Client');
     }
 }

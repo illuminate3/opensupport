@@ -46,6 +46,7 @@
                         <li class="{{ Request::is('/') ? 'active' : '' }}"½><a href="/">Home</a></li>
                         <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="/about">About</a></li>
                         <li class="{{ Request::is('tickets') ? 'active' : '' }}"><a href="/tickets">Tickets</a></li>
+                        <li class="{{ Request::is('clients') ? 'active' : '' }}"><a href="/clients">Clients</a></li>
                     </ul>
 
 

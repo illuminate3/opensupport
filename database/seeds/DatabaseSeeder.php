@@ -17,7 +17,10 @@ class DatabaseSeeder extends Seeder {
         $this->command->info("Ticket table seeded.");
         
         $this->call('UserTableSeeder');
-        $this->command->info('User table seeded');
+        $this->command->info('User table seeded.');
+        
+        $this->call('ClientTableSeeder');
+        $this->command->info('Client table seeded.');
     }
 
 }
