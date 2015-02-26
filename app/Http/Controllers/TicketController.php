@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,7 +14,7 @@ class TicketController extends Controller {
      * @return Response
      */
     public function index() {
-        $tickets = Ticket::latest()->get();
+        $tickets = Ticket::with('isFrom')->get();
         
         return view('tickets.index', compact('tickets'));
     }

@@ -8,6 +8,7 @@ class Ticket extends Model {
     
     protected $fillable = [ 'title', 'description', 'status', 'user_id' ];
     
+    protected $ticket_status = [ 'open','pending', 'close', 'solved' ];
     /**
      * A Ticket can be assigned to a User.
      * 
@@ -15,7 +16,7 @@ class Ticket extends Model {
      */
     public function assignedTo()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
     
     /**
@@ -25,6 +26,14 @@ class Ticket extends Model {
      */
     public function isFrom()
     {
-        return $this->belongsTo('App\Client');
+        return $this->belongsTo('App\Client', 'client_id', 'id');
+    }
+    
+    /**
+     *  Return Ticket status as string
+     */
+    public function getTicketStatus()
+    {
+        return $this->ticket_status[$this->status];
     }
 }
