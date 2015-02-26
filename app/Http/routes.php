@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'PageController@index');
-Route::get('about', 'PageController@about');
+Route::get('/', 'DashboardController@index');
 
 Route::resource('tickets', 'TicketController');
 

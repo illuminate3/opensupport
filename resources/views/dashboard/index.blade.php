@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Open support front page</h1>
+<h1>Dashboard</h1>
 
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel lacinia tellus. Quisque malesuada dolor purus, at venenatis urna pellentesque eget. Aliquam erat volutpat. Vivamus accumsan, leo sit amet varius lobortis, libero tortor finibus nisl, sed hendrerit libero tellus eget urna. Donec facilisis lorem sed mauris elementum, non consectetur leo sollicitudin. Nunc aliquet arcu lectus, quis pellentesque purus tempor at. Sed vitae urna id dui suscipit fermentum et ac ipsum. Vestibulum dignissim auctor ex, consequat consequat augue molestie vel. Pellentesque porta sagittis fringilla. Morbi sit amet nibh nulla. Suspendisse euismod purus et est maximus pharetra. Sed non sem tellus.

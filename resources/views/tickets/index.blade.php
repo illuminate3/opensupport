@@ -41,7 +41,7 @@
             
         <td>
             @if ($ticket->assignedTo == null )
-            <h5>unassigned.</h5>
+            <h5>unassigned</h5>
             @else
             <h5>{{ $ticket->assignedTo->name }}</h5>
             @endif
@@ -49,7 +49,7 @@
 
         <td>
         @if ( $ticket->isFrom == null )
-            <h5>unassigned.</h5>
+            <h5>unassigned</h5>
         @else
             <h5>{{ $ticket->isFrom->name }}</h5>
         @endif

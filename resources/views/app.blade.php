@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
 
-        <title>Starter Template for Bootstrap</title>
+        <title>Open support system</title>
 
         <!-- Bootstrap core CSS -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
         <link href="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
 
         <!-- Custom styles for this template -->
-        <link href="/css/starter-template.css" rel="stylesheet">
+        <link href="/css/opensupport.css" rel="stylesheet">
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -31,7 +31,7 @@
     </head>
 
     <body>
-
+<div id="wrap">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -45,8 +45,6 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="{{ Request::is('/') ? 'active' : '' }}"½><a href="/">Home</a></li>
-                        <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="/about">About</a></li>
                         <li class="{{ Request::is('tickets') ? 'active' : '' }}"><a href="/tickets">Tickets</a></li>
                         <li class="{{ Request::is('clients') ? 'active' : '' }}"><a href="/clients">Clients</a></li>
                     </ul>
@@ -74,8 +72,13 @@
             @yield('content')
 
         </div><!-- /.container -->
-
-
+</div> <!-- id wrap -->
+    <div id="footer">
+      <div class="container">
+          <p class="text-center">Write a better footer text.git st</p>
+        
+      </div>
+    </div>
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

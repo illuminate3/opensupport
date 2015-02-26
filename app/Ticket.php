@@ -2,6 +2,13 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+abstract class TicketStatus {
+    const open = 0;
+    const close = 1;
+    const pending = 2;
+    const solved = 3;            
+}
+
 class Ticket extends Model {
 
     protected $table = 'tickets';
@@ -34,6 +41,22 @@ class Ticket extends Model {
      */
     public function getTicketStatus()
     {
-        return $this->ticket_status[$this->status];
+        switch ($this->status) {
+            case TicketStatus::open:
+                return 'open';
+                break;
+            case TicketStatus::close:
+                return 'close';
+                break;
+            case TicketStatus::pending:
+                return 'pending';
+                break;
+            case TicketStatus::solved:
+                return 'solved';
+                break;
+            default:
+                return 'invalid status';
+                break;
+        }
     }
 }
