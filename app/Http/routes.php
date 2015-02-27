@@ -13,6 +13,8 @@
 
 Route::get('/', 'DashboardController@index');
 
+Route::get('/settings', 'SettingsController@index');
+
 Route::resource('tickets', 'TicketController');
 
 Route::resource('clients', 'ClientController');
