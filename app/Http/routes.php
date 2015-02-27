@@ -14,6 +14,8 @@
 Route::get('/', 'DashboardController@index');
 
 Route::get('/settings', 'SettingsController@index');
+Route::get('/settings/system', 'SettingsController@index');
+Route::get('/settings/users', 'SettingsController@index');
 
 Route::resource('tickets', 'TicketController');
 

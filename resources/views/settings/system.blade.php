@@ -2,5 +2,6 @@
 <h3>System settings</h3>
 
 <p>
-    blah.
+    Should contain any system settings.
 </p>
+

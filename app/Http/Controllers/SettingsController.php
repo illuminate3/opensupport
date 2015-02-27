@@ -12,4 +12,13 @@ class SettingsController extends Controller {
             return view('settings.index');
         }
 
+        public function system()
+        {
+            return view('settings.system');
+        }
+        
+        public function user()
+        {
+            return view('settings.users');
+        }
 }
