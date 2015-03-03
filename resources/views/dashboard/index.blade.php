@@ -11,6 +11,6 @@
     Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque viverra feugiat orci eget tincidunt. Vestibulum interdum ipsum vel elit rutrum tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ultricies enim nibh. Aenean porttitor risus at turpis tincidunt cursus. Nulla sit amet sollicitudin libero. Duis sit amet odio ac augue semper congue et quis purus. Sed vestibulum leo sapien, quis fringilla nulla tempus vel. Ut pellentesque ultricies quam id imperdiet. Aenean id diam eu dolor viverra mattis. Sed consectetur urna eu dui euismod, ut finibus tellus vulputate. Curabitur nec tristique augue. Donec eu consequat mauris, at vulputate nulla. Sed ultricies rhoncus purus, at tincidunt lectus posuere congue.    
 </p>
 
-<h2><a href="http://localhost:8000/settings/users">press me!</a></h2>
+<h2><a href="http://localhost:8000/admin/users">press me!</a></h2>
 
 @stop

@@ -13,12 +13,11 @@
 
 Route::get('/', 'DashboardController@index');
 
-Route::get('/settings', 'SettingsController@index');
-Route::get('/settings/system', 'SettingsController@index');
-Route::get('/settings/users', 'SettingsController@index');
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/system', 'AdminController@system');
 
 Route::resource('tickets', 'TicketController');
-
+Route::resource('/admin/users', 'UserController');
 Route::resource('clients', 'ClientController');
 
 Route::controllers([
