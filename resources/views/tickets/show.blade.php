@@ -12,7 +12,7 @@
 
 <h5>Created at : {{$ticket->created_at->diffForHumans() }}</h5>
 <h5>Ticket id: {{ $ticket->id }}</h5>
-<h5>Status : {{ $ticket->status }}</h5>
+<h5>Status : {{ $ticket->getTicketStatus() }}</h5>
 
 <p>{{ $ticket->description }}</p>
 
