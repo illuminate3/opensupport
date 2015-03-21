@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\User;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserEditRequest;
 
 class UserController extends Controller {
 
@@ -37,7 +38,7 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(UserRequest $request)
+	public function store(UserCreateRequest $request)
 	{
             $input = $request->all();
             
@@ -78,7 +79,7 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, UserRequest $request)
+	public function update($id, UserEditRequest $request)
 	{
 		$user = User::findorfail($id);
                 
