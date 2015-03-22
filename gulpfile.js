@@ -15,5 +15,5 @@ elixir(function(mix) {
     mix.less('app.less');
     mix.copy('vendor/almasaeed2010/adminlte/bootstrap', 'public/bootstrap');
     mix.copy('vendor/almasaeed2010/adminlte/dist', 'public/dist');
-    mix.copy('vendor/almasaeed2010/adminlte/plugins', 'public/plugsins');
+    mix.copy('vendor/almasaeed2010/adminlte/plugins', 'public/plugins');
 });

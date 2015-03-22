@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -9,13 +11,22 @@ use App\Ticket;
 class TicketController extends Controller {
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index() {
         $tickets = Ticket::with('isFrom')->get();
-        
+
         return view('tickets.index', compact('tickets'));
     }
 
@@ -35,11 +46,11 @@ class TicketController extends Controller {
      */
     public function store(TicketRequest $request) {
         $input = $request->all();
-        
+
         Ticket::create($input);
-        
+
         return redirect('tickets');
-     }
+    }
 
     /**
      * Display the specified resource.
@@ -49,8 +60,8 @@ class TicketController extends Controller {
      */
     public function show($id) {
         $ticket = Ticket::find($id);
-        
-        return view('tickets.show', compact('ticket') );
+
+        return view('tickets.show', compact('ticket'));
     }
 
     /**
@@ -60,8 +71,8 @@ class TicketController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        $ticket = Ticket::findOrFail($id);        
-        
+        $ticket = Ticket::findOrFail($id);
+
         return view('tickets.edit', compact('ticket'));
     }
 
@@ -73,9 +84,9 @@ class TicketController extends Controller {
      */
     public function update($id, TicketRequest $request) {
         $ticket = Ticket::findOrFail($id);
-        
-        $ticket->update( $request->all() );
-        
+
+        $ticket->update($request->all());
+
         return redirect('tickets');
     }
 
