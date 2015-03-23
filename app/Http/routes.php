@@ -20,6 +20,8 @@ Route::resource('tickets', 'TicketController');
 Route::resource('/admin/users', 'UserController');
 Route::resource('clients', 'ClientController');
 
+Route::get('/user/profile', 'UserController@profile');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
