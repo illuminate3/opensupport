@@ -48,6 +48,7 @@ class UserController extends Controller {
     public function store(UserCreateRequest $request) {
         $input = $request->all();
 
+        $input['password'] = bcrypt($input['password_confirmation']);
         User::create($input);
 
         return redirect('admin/users');
@@ -63,6 +64,15 @@ class UserController extends Controller {
         $user = User::find($id);
 
         return view('admin.users.show', compact('user'));
+    }
+
+    /**
+     *  Display the current User profile
+     */
+    public function profile() {
+        $user = \Auth::user();
+
+        return view('user/profile', compact('user'));
     }
 
     /**
@@ -98,7 +108,11 @@ class UserController extends Controller {
      * @return Response
      */
     public function destroy($id) {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+        return redirect('/admin/users');
     }
 
 }
