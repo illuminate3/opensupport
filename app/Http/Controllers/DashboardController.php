@@ -19,7 +19,10 @@ class DashboardController extends Controller {
      * @return Response
      */
     public function index() {
-        return view('dashboard.index');
+        $clients = \DB::table('clients')->count();
+        $open_tickets = \DB::table('tickets')->where('status', '0')->count();
+        
+        return view('dashboard.index', compact('clients', 'open_tickets'));
     }
 
 }

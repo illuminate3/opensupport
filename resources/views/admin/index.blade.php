@@ -2,12 +2,17 @@
 
 @section('content')
 
-<h1>Administration</h1>
-<hr/>
+
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
+            <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Administration</h3>
 
+            </div>
+             <div class="box-body pad">
             <ul class="nav nav-pills nav-stacked">
                 @if ( Request::is('admin') )
                     <li class="active"><a href="/admin/system">System</a></li>
@@ -17,6 +22,8 @@
                 <li class="{{ Request::is('admin/users*') ? 'active' : '' }}"><a href="/admin/users">User</a></li>
                 @endif
             </ul>
+             </div>
+        </div>
         </div>
         <div class="col-md-10">
             @if ( Request::is('admin/system') )
@@ -29,5 +36,6 @@
         </div>
     </div>
 </div>
+
 
 @stop

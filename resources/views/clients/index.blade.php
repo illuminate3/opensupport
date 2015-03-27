@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="col-md-8 col-md-offset-2">
+    
 <h1>Client list</h1>
 
 <a href="{{ action('ClientController@create') }}" class="btn btn-primary" role="button">New</a>
@@ -27,6 +29,8 @@
 <h5>email : {{ $client->email }}</h5>
 <hr/>
 @endforeach
+
+</div>
 
 @else  
 
