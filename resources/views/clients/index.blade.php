@@ -3,35 +3,53 @@
 @section('content')
 
 <div class="col-md-8 col-md-offset-2">
-    
-<h1>Client list</h1>
 
-<a href="{{ action('ClientController@create') }}" class="btn btn-primary" role="button">New</a>
+    <div class="box box-solid">
+        <div class="box-header with-border">
 
-<hr/>
+            <h3 class="box-title">Clients</h3>
+        </div>
+        <div class="box-body">
 
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="Search...">
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
-    </span>
+            <a href="{{ action('ClientController@create') }}" class="btn btn-primary" role="button">New</a>
+            <a href="#" class="btn btn-primary" role="button">Delete</a>
+
+            <hr/>
+
+            @if( count($clients) )
+
+            <table id="clients" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ( $clients as $client )
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="option1" value="Selected"> 
+                        </td>
+                        <td>
+                            <a href="{{ action('ClientController@show', $client->id ) }}">{{ $client->name }}
+                        </td>
+                        <td>
+                            {{ $client->phone }}
+                        </td>
+                        <td>
+                            {{ $client->email }}
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-<hr/>
-
-@if( count($clients) )
-
-@foreach ( $clients as $client )
-
-<h3><a href="{{ action('ClientController@show', $client->id ) }}">{{ $client->name }}</h3>
-<h5><a href="{{ action('ClientController@edit', $client->id ) }}">edit</a></h5>
-<h5>phone : {{ $client->phone }}</h5>
-<h5>email : {{ $client->email }}</h5>
-<hr/>
-@endforeach
-
-</div>
-
 @else  
 
 <h3>There are no clients created yet.</h3>

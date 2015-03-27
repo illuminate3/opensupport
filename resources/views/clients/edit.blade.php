@@ -2,16 +2,25 @@
 
 @section('content')
 
-<h1>Edit: {!! $client->name !!}</h1>
+<div class="col-md-8 col-md-offset-2">
 
-<hr/>
+    <div class="box box-solid">
+        <div class="box-header with-border">
 
-{!! Form::model( $client, ['method' => 'PATCH', 'action' => ['ClientController@update', $client->id]] ) !!}
+            <h3 class="box-title">Edit: {!! $client->name !!}</h3>
+        </div>
+        <div class="box-body">
 
-@include ('clients._form', [ 'submitButtonText' => 'Edit'])
+            {!! Form::model( $client, ['method' => 'PATCH', 'action' => ['ClientController@update', $client->id]] ) !!}
 
-{!! Form::close() !!}
+            @include ('clients._form', [ 'submitButtonText' => 'Edit'])
 
-@include ('errors.list')
+            {!! Form::close() !!}
+
+            @include ('errors.list')
+
+        </div>
+    </div>
+</div>    
 
 @stop
