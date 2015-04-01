@@ -24,7 +24,11 @@
             <h5>{{ $client->city }}</h5>
             <h5>{{ $client->zip_code }}</h5>
             <h5>{{ $client->country }}</h5>
-
+            
+            <hr />
+            @foreach ( $client->tickets as $ticket )
+            <h5>{{ $ticket->name }}</h5>
+            @endforeach
         </div>
     </div>
 </div>A

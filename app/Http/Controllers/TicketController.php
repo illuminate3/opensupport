@@ -6,7 +6,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\TicketRequest;
+use App\Http\Requests\TicketCommentRequest;
 use App\Ticket;
+use App\TicketComment;
 
 class TicketController extends Controller {
 
@@ -62,6 +64,19 @@ class TicketController extends Controller {
         $ticket = Ticket::find($id);
 
         return view('tickets.show', compact('ticket'));
+    }
+
+    /**
+     * Add a new TicketComment with $id as Ticket id.
+     * 
+     * @param type $id
+     */
+    public function addComment(TicketCommentRequest $request) {
+        $input = $request->all();
+
+        TicketComment::create($input);
+
+        return redirect('tickets');
     }
 
     /**

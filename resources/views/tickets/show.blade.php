@@ -10,73 +10,120 @@
                     {{$ticket->created_at->toFormattedDateString() }}
                 </span>
             </li>
+              @foreach ( $ticket->comments as $comment )
             <li>
                 <i class="fa fa-folder-open bg-blue"></i>
                 <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> {{$ticket->created_at->diffForHumans() }}</span>
-                    <h3 class="timeline-header">{{ $ticket->title }}</h3>
+                    <span class="time"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }} </span>
+                    @if( $comment->creator_name )
+                       <h3 class="timeline-header">Added by {{ $comment->creator_name }}</h3>
+                    @else
+                       <h3 class="timeline-header">Added by unknowend </h3>
+                    @endif                    
                     <div class="timeline-body">
-                        {{ $ticket->description }}
+                        {{ $comment->description }}
                     </div>
                     <div class="timeline-footer">
                         <a class="btn btn-primary btn-xs">Edit</a>
-
                     </div>
                 </div>
             </li>
-            <li>
-                <i class="fa fa-user bg-aqua"></i>
-                <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                    <h3 class="timeline-header no-border"><a href="#"> Demo</a> now ownes this ticket</h3>
-                </div>
-            </li>
+              @endforeach
             <li>
                 <i class="fa fa-clock-o bg-gray"></i>
             </li>
         </ul>
 
         <hr />
-        
+
         <!-- Editor -->
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Commet Ticket</h3>
             </div><!-- /.box-header -->
             <div class="box-body pad">
-                <form>
-                    <ul class="wysihtml5-toolbar">
-                        
-                    </ul><textarea class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;" placeholder="Place some text here"></textarea><input type="hidden" name="_wysihtml5_mode" value="1"><iframe class="wysihtml5-sandbox" security="restricted" allowtransparency="true" frameborder="0" width="0" height="0" marginwidth="0" marginheight="0" style="border-collapse: separate; border: 1px solid rgb(221, 221, 221); clear: none; display: inline-block; float: none; margin: 0px; outline: rgb(51, 51, 51) none 0px; outline-offset: 0px; padding: 10px; position: static; top: auto; left: auto; right: auto; bottom: auto; z-index: auto; vertical-align: baseline; text-align: start; -webkit-box-shadow: none; box-shadow: none; border-radius: 0px; width: 100%; height: 200px; background-color: rgb(255, 255, 255);"></iframe>
-                </form>
+
+                {!! Form::model( $ticket, ['method' => 'POST', 'action' => ['TicketController@addComment'] ] ) !!}
+                <div class="form-group">
+                    {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Enter text ...' ] ) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::hidden('ticket_id', $ticket->id) !!}
+                    {!! Form::hidden('creator_name',  Auth::user()->name ) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::submit('Comment', ['class' => 'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
+
+                @include ('errors.list')
             </div>
         </div>
 
     </div>
 
-        
+
 
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ $ticket->isFrom->name }}</h3>
+                <h3 class="box-title">
+                    <a href="{{ action('ClientController@show', $ticket->isFrom->id ) }}">{{ $ticket->isFrom->name }}</a>
+                </h3>
             </div>
             <div class="box-body">
                 <h5>phone : {{ $ticket->isFrom->phone }}</h5>
                 <h5>email : {{ $ticket->isFrom->email }}</h5>
                 <hr />
-                <h4>Address</h4>
-                <h5>{{ $ticket->isFrom->street }}</h5>
-                <h5>{{ $ticket->isFrom->city }}</h5>
-                <h5>{{ $ticket->isFrom->zip_code }}</h5>
-                <h5>{{ $ticket->isFrom->country }}</h5>
-                <hr/>
                 <h4>Ticket</h4>
-                <h5>Status : {{ $ticket->getTicketStatus() }}</h5>
-                <h5>Assigned to : {{ $ticket->assignedTo->name }}</h5>
+                {!! Form::model( $ticket, ['method' => 'PATCH', 'action' => ['TicketController@update', $ticket->id]] ) !!}
+                <div class="form-group">
+                    {!!  Form::label('status','Status',array('id'=>'','class'=>'')) !!}
+                    {!! Form::select('status', array(
+                    '0' => 'Open',
+                    '1' => 'Close',
+                    '2' => 'Pending',
+                    '3' => 'Solved'
+                    )) !!}
+
+                </div>
+                <div class="form-group">
+                    {!!  Form::label('assignedTo','Assigned to',array('id'=>'','class'=>'')) !!}
+                    {!! Form::select('assignedTo', array(
+                    '0' => 'Admin',
+                    '1' => 'Demo',
+                    )) !!}
+
+                </div>
+                <div class="form-group">
+                    {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
+
+                @include ('errors.list')
             </div>
         </div>
     </div>
 </div>
+
+@stop
+
+@section('script')
+
+<script>
+    $('.textarea').wysihtml5({
+        toolbar: {
+            "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+            "emphasis": false, //Italics, bold, etc. Default true
+            "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+            "html": false, //Button which allows you to edit the generated HTML. Default false
+            "link": false, //Button to insert a link. Default true
+            "image": false, //Button to insert an image. Default true,
+            "color": false, //Button to change color of font  
+            "blockquote": false, //Blockquote  
+            "size": < buttonsize > //default: none, other options are xs, sm, lg
+        }
+    });
+</script>
 
 @stop

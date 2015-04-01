@@ -13,7 +13,7 @@ class Ticket extends Model {
 
     protected $table = 'tickets';
     
-    protected $fillable = [ 'title', 'description', 'status', 'user_id' ];
+    protected $fillable = [ 'title', 'status', 'user_id' ];
     
     protected $ticket_status = [ 'open','pending', 'close', 'solved' ];
     /**
@@ -36,6 +36,16 @@ class Ticket extends Model {
         return $this->belongsTo('App\Client', 'client_id', 'id');
     }
     
+    /**
+     * Ticket has Ticket comments
+     * 
+     * @return type
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\TicketComment');
+    }
+
     /**
      *  Return Ticket status as string
      */

@@ -2,16 +2,20 @@
 
 @section('content')
 
-<h1>Create new ticket</h1>
+<div class="col-md-8 col-md-offset-2">
 
-<hr/>
+            <h3 class="box-title">Create new ticket</h3>
 
-{!! Form::open(['url' => 'tickets']) !!}
 
-@include ('tickets._form', [ 'submitButtonText' => 'Create'] )
+        {!! Form::open(['url' => 'tickets']) !!}
 
-{!! Form::close() !!}
+        @include ('tickets._form', [ 'submitButtonText' => 'Create'] )
 
-@include ('errors.list')
+        {!! Form::close() !!}
+
+        @include ('errors.list')
+
+    </div>
+</div>
 
 @stop

@@ -10,7 +10,6 @@
 
 @include ('tickets._form', [ 'submitButtonText' => 'Edit'])
 
-
 {!! Form::close() !!}
 
 @include ('errors.list')
