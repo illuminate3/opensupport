@@ -13,7 +13,7 @@ class Ticket extends Model {
 
     protected $table = 'tickets';
     
-    protected $fillable = [ 'title', 'status', 'user_id' ];
+    protected $fillable = [ 'title', 'client_id', 'status', 'user_id' ];
     
     protected $ticket_status = [ 'open','pending', 'close', 'solved' ];
     /**

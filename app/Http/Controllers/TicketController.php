@@ -49,8 +49,14 @@ class TicketController extends Controller {
     public function store(TicketRequest $request) {
         $input = $request->all();
 
-        Ticket::create($input);
+        $ticket = Ticket::create($input);
 
+        TicketComment::create([
+            'description' => $input['description'],
+            'ticket_id' => $ticket->id,
+            'creator_name' => $input['creator_name'],
+        ]);
+                
         return redirect('tickets');
     }
 

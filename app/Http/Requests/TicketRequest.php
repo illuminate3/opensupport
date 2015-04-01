@@ -22,8 +22,7 @@ class TicketRequest extends Request {
 	public function rules()
 	{
 		return [
-		'title' => 'required',
-                'description' => 'required',    
+		'title' => 'required',    
 		];
 	}
 
