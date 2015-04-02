@@ -26,10 +26,20 @@
             <h5>{{ $client->country }}</h5>
             
             <hr />
-            @foreach ( $client->tickets as $ticket )
-            <h5>{{ $ticket->name }}</h5>
-            @endforeach
+            
+            @include('tickets._ticket_list', [ 'collection' => $client->tickets ] )
+            
         </div>
     </div>
-</div>A
+</div>
+@stop
+
+@section('script')
+
+<script>
+    $(document).ready(function () {
+        $("#tickets").dataTable();
+    });
+</script>
+
 @stop
