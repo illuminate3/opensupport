@@ -58,3 +58,13 @@
 @endif
 
 @stop
+
+@section('script')
+
+<script>
+    $(document).ready(function () {
+        $("#clients").dataTable();
+    });
+</script>
+
+@stop
