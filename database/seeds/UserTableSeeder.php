@@ -12,14 +12,18 @@ class UserTableSeeder extends Seeder {
         User::create([
             'name' => 'admin',
             'email' => 'admin@example.com',
-            'password' => '$2y$10$LsfFRmGF37S7auhhT0AurOnGHOyNxOJxacpvEZR7inq2czb744RSS'
+            'password' => '$2y$10$LsfFRmGF37S7auhhT0AurOnGHOyNxOJxacpvEZR7inq2czb744RSS',
+            'status' => '0',
+            'role' => '0',
         ]);
                
         // password is password
         User::create([
             'name' => 'demo',
             'email' => 'demo@example.com',
-            'password' => '$2y$10$h0n/bkyBzKzuzpsNW/aWPuQISSIWmKx.maOvSai58byDY4Pbm.1BG'
+            'password' => '$2y$10$h0n/bkyBzKzuzpsNW/aWPuQISSIWmKx.maOvSai58byDY4Pbm.1BG',
+            'status' => '0',
+            'role' => '1',
         ]);
     }
 
