@@ -87,7 +87,11 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('assignedTo','Assigned to',array('id'=>'','class'=>'')) !!}
-                    {!! Form::select('user_id', $users ) !!}
+                    @if( $ticket->assignedTo == NULL )
+                        {!! Form::select('user_id', $users, 0 ) !!}
+                    @else
+                        {!! Form::select('user_id', $users ) !!}
+                    @endif
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}

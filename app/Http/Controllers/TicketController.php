@@ -70,6 +70,7 @@ class TicketController extends Controller {
         $ticket = Ticket::find($id);
 
         $users = \DB::table('users')->lists('name', 'id');
+        $users[0] = 'unassigned';        
         
         return view('tickets.show', compact('ticket', 'users'));
     }
@@ -108,6 +109,9 @@ class TicketController extends Controller {
     public function update($id, Request $request) {
         $ticket = Ticket::findOrFail($id);
 
+        if( $request['user_id'] == 0 )
+            $request['user_id'] = NULL;
+        
         $ticket->update($request->all());
         
         return redirect('tickets');
