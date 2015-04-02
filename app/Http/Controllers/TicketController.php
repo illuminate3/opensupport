@@ -69,7 +69,9 @@ class TicketController extends Controller {
     public function show($id) {
         $ticket = Ticket::find($id);
 
-        return view('tickets.show', compact('ticket'));
+        $users = \DB::table('users')->lists('name', 'id');
+        
+        return view('tickets.show', compact('ticket', 'users'));
     }
 
     /**
@@ -103,11 +105,11 @@ class TicketController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id, TicketRequest $request) {
+    public function update($id, Request $request) {
         $ticket = Ticket::findOrFail($id);
 
         $ticket->update($request->all());
-
+        
         return redirect('tickets');
     }
 

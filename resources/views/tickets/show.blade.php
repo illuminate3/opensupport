@@ -10,15 +10,15 @@
                     {{$ticket->created_at->toFormattedDateString() }}
                 </span>
             </li>
-              @foreach ( $ticket->comments as $comment )
+            @foreach ( $ticket->comments as $comment )
             <li>
                 <i class="fa fa-folder-open bg-blue"></i>
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }} </span>
                     @if( $comment->creator_name )
-                       <h3 class="timeline-header">Added by {{ $comment->creator_name }}</h3>
+                    <h3 class="timeline-header">Added by {{ $comment->creator_name }}</h3>
                     @else
-                       <h3 class="timeline-header">Added by unknowend </h3>
+                    <h3 class="timeline-header">Added by unknowend </h3>
                     @endif                    
                     <div class="timeline-body">
                         {{ $comment->description }}
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </li>
-              @endforeach
+            @endforeach
             <li>
                 <i class="fa fa-clock-o bg-gray"></i>
             </li>
@@ -84,15 +84,10 @@
                     '2' => 'Pending',
                     '3' => 'Solved'
                     )) !!}
-
                 </div>
                 <div class="form-group">
-                    {!!  Form::label('assignedTo','Assigned to',array('id'=>'','class'=>'')) !!}
-                    {!! Form::select('assignedTo', array(
-                    '0' => 'Admin',
-                    '1' => 'Demo',
-                    )) !!}
-
+                    {!! Form::label('assignedTo','Assigned to',array('id'=>'','class'=>'')) !!}
+                    {!! Form::select('user_id', $users ) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
