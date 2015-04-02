@@ -8,6 +8,7 @@
             <th>Create</th>
             <th>Owner</th>
             <th>Client</th>
+            <th>Priority</th>
             <th>Status</th>
         </tr>
     </thead>
@@ -43,6 +44,9 @@
                 @else
                 <h5>{{ $item->isFrom->name }}</h5>
                 @endif
+            </td>
+              <td>
+                <h5>{{ $item->getPriority() }}</h5>
             </td>
             <!-- Status -->
             <td>

@@ -85,6 +85,15 @@
                     '3' => 'Solved'
                     )) !!}
                 </div>
+                   <div class="form-group">
+                    {!!  Form::label('priority','Priority',array('id'=>'','class'=>'')) !!}
+                    {!! Form::select('priority', array(
+                    '1' => 'Low',
+                    '2' => 'Middle',
+                    '3' => 'High',
+                    '4' => 'Critical'
+                    )) !!}
+                </div>
                 <div class="form-group">
                     {!! Form::label('assignedTo','Assigned to',array('id'=>'','class'=>'')) !!}
                     @if( $ticket->assignedTo == NULL )
