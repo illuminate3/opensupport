@@ -61,8 +61,6 @@
 
     </div>
 
-
-
     <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -85,7 +83,7 @@
                     '3' => 'Solved'
                     )) !!}
                 </div>
-                   <div class="form-group">
+                <div class="form-group">
                     {!!  Form::label('priority','Priority',array('id'=>'','class'=>'')) !!}
                     {!! Form::select('priority', array(
                     '1' => 'Low',
@@ -97,9 +95,9 @@
                 <div class="form-group">
                     {!! Form::label('assignedTo','Assigned to',array('id'=>'','class'=>'')) !!}
                     @if( $ticket->assignedTo == NULL )
-                        {!! Form::select('user_id', $users, 0 ) !!}
+                    {!! Form::select('user_id', $users, 0 ) !!}
                     @else
-                        {!! Form::select('user_id', $users ) !!}
+                    {!! Form::select('user_id', $users ) !!}
                     @endif
                 </div>
                 <div class="form-group">

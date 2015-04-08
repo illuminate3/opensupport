@@ -6,7 +6,7 @@
     <div class="box box-solid">
         <div class="box-header with-border">
 
-            <h3 class="box-title">Users Management</h3>
+            <h3 class="box-title">Users</h3>
         </div>
         <div class="box-body">
 

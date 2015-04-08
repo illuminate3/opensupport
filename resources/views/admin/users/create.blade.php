@@ -2,16 +2,24 @@
 
 @section('admin.users.index')
 
-<h3>Create new user</h3>
+<div class="col-md-10">
+    <div class="box box-solid">
+        <div class="box-header with-border">
 
-<hr/>
+            <h3 class="box-title"><a href="/admin/users">Users</a> \ Create new user</h3>
+        </div>
+        <div class="box-body">
 
-{!! Form::open(['url' => 'admin/users']) !!}
+            {!! Form::open(['url' => 'admin/users']) !!}
 
-@include ('admin.users._form', [ 'submitButtonText' => 'Create'] )
+            @include ('admin.users._form', [ 'submitButtonText' => 'Create'] )
 
-{!! Form::close() !!}
+            {!! Form::close() !!}
 
-@include ('errors.list')
+            @include ('errors.list')
+
+        </div>
+    </div>
+</div>
 
 @stop

@@ -3,13 +3,27 @@
 @section('admin.users.index')
 
 @if ( count($user) )
-<h3>{{ $user->name }}</h3>
-<h5>Created at {{$user->created_at->diffForHumans() }}</h5>
-<a href="/admin/users/{{ $user->id }}/edit"><h5>Edit user</h5></a>
-<a href="/admin/users"><h5>Back to user list</h5></a>
-<hr/>
 
+<div class="col-md-10">
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><a href="/admin/users">Users</a> \ {{ $user->name }}</h3>
+        </div>
+        <div class="box-body">
 
+            <a href="/admin/users/{{ $user->id }}/edit" class="btn btn-primary" role="button">Edit</a>
+
+            <hr />
+
+            <h5>Created at {{$user->created_at->diffForHumans() }}</h5>
+
+            <h4>Email: {{ $user->email }}</h4>
+            <h4>Status: {{ $user->getStatus() }}</h4>
+            <h4>Role: {{ $user->getRole() }}</h4>
+
+        </div>
+    </div>
+</div>
 
 @else
 

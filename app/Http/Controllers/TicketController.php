@@ -41,6 +41,14 @@ class TicketController extends Controller {
         return view('tickets.create');
     }
 
+    public function merge( Request $request) {
+        $input = $request->all();
+        
+        dd( $input );
+        
+        return redirect('tickets');
+    }
+    
     /**
      * Store a newly created resource in storage.
      *

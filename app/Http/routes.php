@@ -18,6 +18,7 @@ Route::get('/admin/system', 'AdminController@system');
 
 Route::resource('tickets', 'TicketController');
 Route::post('/tickets/comment', 'TicketController@addComment');
+Route::post('/tickets/merge', 'TicketController@merge');
 
 Route::resource('/admin/users', 'UserController');
 Route::resource('clients', 'ClientController');
